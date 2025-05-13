@@ -46,17 +46,17 @@ export default function Home() {
               <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                   <Link href={`/register?role=${UserRole.COLLECTOR}`}>
-                    <Button className="w-full" size="lg">
+                    <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg">
                       Collector
                     </Button>
                   </Link>
                   <Link href={`/register?role=${UserRole.TRANSPORTER}`}>
-                    <Button className="w-full bg-secondary-500 hover:bg-secondary-600" size="lg">
+                    <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90" size="lg">
                       Transporter
                     </Button>
                   </Link>
                   <Link href={`/register?role=${UserRole.BUYER}`}>
-                    <Button className="w-full bg-accent-500 hover:bg-accent-600" size="lg">
+                    <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
                       Buyer
                     </Button>
                   </Link>
