@@ -15,6 +15,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -202,6 +203,9 @@ export default function CollectorDashboard() {
                 <DialogContent className="max-w-3xl">
                   <DialogHeader>
                     <DialogTitle>Create Waste Listing</DialogTitle>
+                    <DialogDescription>
+                      Fill out the form below to create a new waste listing for collection.
+                    </DialogDescription>
                   </DialogHeader>
                   <WasteListingForm />
                 </DialogContent>
