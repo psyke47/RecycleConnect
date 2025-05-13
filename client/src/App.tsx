@@ -7,64 +7,25 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Register from "@/pages/Register";
 import Login from "@/pages/Login";
-import CollectorDashboard from "@/pages/dashboard/CollectorDashboard";
-import TransporterDashboard from "@/pages/dashboard/TransporterDashboard";
-import BuyerDashboard from "@/pages/dashboard/BuyerDashboard";
-import { UserRole } from "@shared/schema";
-import { useAuth, AuthProvider } from "./lib/auth";
-
-function Router() {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
-
-  return (
-    <Switch>
-      {/* Public routes */}
-      <Route path="/" component={Home} />
-      <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
-
-      {/* Role-based protected routes */}
-      <Route path="/dashboard">
-        {() => {
-          if (!user) return <Login />;
-
-          switch (user.role) {
-            case UserRole.COLLECTOR:
-              return <CollectorDashboard />;
-            case UserRole.TRANSPORTER:
-              return <TransporterDashboard />;
-            case UserRole.BUYER:
-              return <BuyerDashboard />;
-            default:
-              return <NotFound />;
-          }
-        }}
-      </Route>
-
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
-function AppContent() {
-  return (
-    <TooltipProvider>
-      <Toaster />
-      <Router />
-    </TooltipProvider>
-  );
-}
+import Dashboard from "@/pages/dashboard/Dashboard";
+import { AuthProvider } from "./lib/auth";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <AppContent />
+        <TooltipProvider>
+          <Toaster />
+          <Switch>
+            {/* Public routes */}
+            <Route path="/" component={Home} />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
+            {/* Fallback to 404 */}
+            <Route component={NotFound} />
+          </Switch>
+        </TooltipProvider>
       </AuthProvider>
     </QueryClientProvider>
   );

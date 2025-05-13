@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { queryClient, apiRequest } from "./queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -28,6 +28,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   } = useQuery<User | null>({
     queryKey: ["/api/auth/me"],
     retry: false,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+    gcTime: 1000 * 60 * 10, // 10 minutes
+    refetchOnWindowFocus: true,
+    refetchOnMount: true,
     onError: () => {
       // Don't display errors for auth checks
       return null;
