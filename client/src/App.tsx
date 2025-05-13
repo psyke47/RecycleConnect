@@ -11,7 +11,7 @@ import CollectorDashboard from "@/pages/dashboard/CollectorDashboard";
 import TransporterDashboard from "@/pages/dashboard/TransporterDashboard";
 import BuyerDashboard from "@/pages/dashboard/BuyerDashboard";
 import { UserRole } from "@shared/schema";
-import { useAuth } from "./lib/auth";
+import { useAuth, AuthProvider } from "./lib/auth";
 
 function Router() {
   const { user, isLoading } = useAuth();
@@ -51,12 +51,22 @@ function Router() {
   );
 }
 
-function App() {
+function AppContent() {
   return (
     <TooltipProvider>
       <Toaster />
       <Router />
     </TooltipProvider>
+  );
+}
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 
