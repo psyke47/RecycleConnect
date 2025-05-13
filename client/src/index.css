@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  
+  /* Green for primary (for collectors & main theme) */
+  --primary: 142 70.6% 45.3%;
+  --primary-foreground: 355 100% 97.3%;
+  
+  /* Blue for secondary (for transporters) */
+  --secondary: 221 83.2% 53.3%;
+  --secondary-foreground: 210 40% 98%;
+  
+  /* Orange for accent (for buyers) */
+  --accent: 24 83.3% 54.5%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 142 71.8% 29.2%;
+  --radius: 0.5rem;
+  
+  /* Chart colors */
+  --chart-1: 142 70.6% 45.3%;
+  --chart-2: 221 83.2% 53.3%;
+  --chart-3: 24 83.3% 54.5%;
+  --chart-4: 262 83.3% 57.8%;
+  --chart-5: 176 75.8% 45.5%;
+  
+  /* Sidebar specific colors */
+  --sidebar-background: 142 70.6% 45.3%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 142 70.6% 45.3%;
+  --sidebar-accent: 0 0% 90%;
+  --sidebar-accent-foreground: 142 70.6% 20.3%;
+  --sidebar-border: 142 70.6% 40.3%;
+  --sidebar-ring: 0 0% 100%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  
+  --primary: 142 70.6% 45.3%;
+  --primary-foreground: 355 100% 97.3%;
+  
+  --secondary: 221 83.2% 53.3%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --accent: 24 83.3% 54.5%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 142 76.2% 27.5%;
+  --radius: 0.5rem;
+  
+  /* Sidebar dark mode colors */
+  --sidebar-background: 142 46.6% 25.3%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 142 46.6% 25.3%;
+  --sidebar-accent: 142 70.6% 20.3%;
+  --sidebar-accent-foreground: 0 0% 90%;
+  --sidebar-border: 142 46.6% 30.3%;
+  --sidebar-ring: 0 0% 100%;
+}
+
+/* Role-specific color schemes */
+.transporter-theme {
+  --primary: 221 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 221 83.2% 40.3%;
+  
+  --sidebar-background: 221 83.2% 53.3%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 221 83.2% 53.3%;
+  --sidebar-accent: 0 0% 90%;
+  --sidebar-accent-foreground: 221 83.2% 25.3%;
+  --sidebar-border: 221 83.2% 45.3%;
+  --sidebar-ring: 0 0% 100%;
+}
+
+.transporter-theme.dark {
+  --sidebar-background: 221 53.2% 25.3%;
+  --sidebar-accent: 221 83.2% 20.3%;
+}
+
+.buyer-theme {
+  --primary: 24 83.3% 54.5%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 24 83.3% 34.5%;
+  
+  --sidebar-background: 24 83.3% 54.5%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 24 83.3% 54.5%;
+  --sidebar-accent: 0 0% 90%;
+  --sidebar-accent-foreground: 24 83.3% 25.5%;
+  --sidebar-border: 24 83.3% 44.5%;
+  --sidebar-ring: 0 0% 100%;
+}
+
+.buyer-theme.dark {
+  --sidebar-background: 24 53.3% 25.5%;
+  --sidebar-accent: 24 83.3% 20.5%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .gradient-heading {
+    @apply bg-gradient-to-br from-green-600 to-green-400 bg-clip-text text-transparent font-bold;
+  }
+  
+  .transporter-gradient-heading {
+    @apply bg-gradient-to-br from-blue-600 to-blue-400 bg-clip-text text-transparent font-bold;
+  }
+  
+  .buyer-gradient-heading {
+    @apply bg-gradient-to-br from-orange-600 to-orange-400 bg-clip-text text-transparent font-bold;
+  }
+  
+  .feature-card {
+    @apply p-6 rounded-lg border border-gray-100 bg-white shadow-sm transition-all hover:shadow-md;
+  }
+}
